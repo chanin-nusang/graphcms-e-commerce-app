@@ -59,7 +59,7 @@ export default {
       this.cartItems.push(item)
       localStorage.setItem("product", JSON.stringify(this.cartItems))
       console.log('Add %s to Cart', this.product.name)
-      alert("สั่งซื้อสำเร็จ")
+      alert("ใส่ตะกร้าแล้ว รอชำระเงิน")
     }
   }
 }  
