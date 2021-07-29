@@ -11,9 +11,9 @@
               > 
               <div class="product-wrap">
                 <g-image v-for="(images, slug) in product.images" class="img-cart" :key="slug" :src="images.url" />   
-                <p>Name: {{ product.name }}&#9;</p> 
-                <p>Qty: x{{ product.count }}&#9;</p>
-                <p>Price: {{ product.price.toLocaleString() }} THB</p>
+                <h4>Name: {{ product.name }}&#9;</h4> 
+                <h4>Qty: x{{ product.count }}&#9;</h4>
+                <h4>Price: {{ product.price.toLocaleString() }} THB</h4>
             </div>
                 
               </li>
@@ -21,12 +21,16 @@
               
             </span>
             <div class="right">
-<h3 >
+            <h2 >
                 <strong>Total Price : {{ TotalPrice.toLocaleString() }} THB</strong>
-              </h3>
+              </h2>
+              
             <g-link :to="'cart/#'" class="bt" >
             Checkout
         </g-link>
+        <button  class="bt-noneborder"  @click="deleteItem()" onClick="history.go(0);">
+            Remove
+        </button>
             </div>
             
     </Layout>
@@ -54,6 +58,7 @@ export default {
     },
     deleteItem() {
       localStorage.removeItem("product")
+      console.log("Remove all item.")
     },
     openModal() {
     
@@ -115,8 +120,9 @@ export default {
 </script>
 
 <style>
-p{
-    width: 200px;
+.h4{
+    font-weight: 300;
+    width: 150px;
 }
 li{
     list-style-type: none;
@@ -125,7 +131,26 @@ li{
   display: flex;
   justify-content: space-between;
 }
-.bt{float: right;
+.bt-noneborder{
+    font-family: 'Rubik', karla, -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #ffffff;
+    color: #5828e8;
+    margin-left: 10px;
+    float: right;
+    border: none;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 7rem;
+    text-align: center;
+    justify-content: center;
+    height: 3rem;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+    border-radius: 5px;
+}
+.bt{margin-left: 10px;
+    float: right;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -174,9 +199,8 @@ li{
 .product-wrap{
     display: flex;
     justify-content: space-between;
-    margin:0 20px 20px 0;
+    margin:0 0 20px 0;
   padding: 1.5rem;
-  width: 100%;
   height: 100px;
   border-radius: .5rem;
   position: relative;
