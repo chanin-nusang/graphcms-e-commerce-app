@@ -2,7 +2,9 @@
   <Layout>
     <div class="divide__between">
       <h1>Showcase</h1>
-      <g-link class="button" href="https://app.graphcms.com/ca8fb3ba8d4f4a43813027734f669cda/master/content/771b4175eaa447a59fa0d7194dbf3d2a/view/0af105749d234960b22b83a691a449dc"> Add Products </g-link>
+      <g-link :to="'cart'" class="button" >
+        <img svg-inline src="~/assets/svg/shopping-cart.svg" alt="shopping-cart" />&nbsp; Cart
+      </g-link>
     </div>
   <div>
     <div v-if="$page.deep.products" class="product-grid">
@@ -11,7 +13,7 @@
         :key="product.id"
         class="flex-col"
       >
-        <g-link :to="'product/' + product.id" class="link" >
+        <g-link :to="'product/' + product.slug" class="link" >
         <div class="product-wrapper">
           <g-image v-for="(images, slug) in product.images" class="img" :key="slug" :src="images.url" />   
            <div class="product-content">
@@ -47,7 +49,6 @@ export default {
       }],
     }
   },
- 
  created(){
   this.products = this.$page.deep.products
  },
@@ -90,7 +91,7 @@ export default {
     align-items: center;
     text-decoration: none;
     border: 1px solid #5828e8;
-    width: 10rem;
+    width: 7rem;
     text-align: center;
     justify-content: center;
     height: 3rem;
